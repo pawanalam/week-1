@@ -4,77 +4,1037 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File-Upload</title>
-</head>
-<style>
-    body{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .upload{
-        /* border: 2px solid red; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 250px;
-        padding: 20px;
-        border-radius: 20px;
-        background: linear-gradient(rgb(149, 109, 109),white);
-    }
-    .upload img {
-        height: 200px;
-        width: 270px;
-        border-radius: 110px;
-    }
+    <title>iEduction - Trasforming eduction</title>
 
-    /* hide the input filed  */
-    input {
-        display: none;
-    }
-    label{
-        /* border: 1px solid orangered; */
-        border-radius: 5px;
-        padding: 7px 42px;
-        margin-top: 10px;
-        background: linear-gradient(rgb(71, 198, 227),rgb(87, 167, 87));
-    }
-</style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            /* that is remove the default padding and margin */
+
+            margin: 0;
+            padding: 0;
+        }
+
+        h4::after {
+            font-size: 20px;
+            content: "";
+            animation: changetext 10s infinite linear;
+            color: white(10, 8, 8);
+            font-family: 'Baloo Bhai', cursive;
+
+        }
+
+        @keyframes changetext {
+            0% {
+                content: "D.Y. Patil";
+            }
+
+            50% {
+                content: "pune Unversity";
+            }
+
+            100% {
+                content: "collage of engineering";
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            color: white;
+        }
+
+        .img-nav img {
+            height: 75px;
+            width: 85px;
+            border-radius: 100px;
+            margin-right: 35px;
+        }
+
+        .background {
+            /* border: 10px solid orange; */
+            background: rgba(0, 0, 0, 0.6) url("https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWR1Y2F0aW9ufGVufDB8fDB8fHww");
+            background-size: 100% 100%;
+            background-blend-mode: darken;
+            cursor: pointer;
+
+        }
+
+        /* RIGHTNAV */
+
+        .rightNav {
+            width: 50%;
+            /* width: 560px; */
+            text-align: right;
+            padding: 0 20px;
+
+        }
+
+        #search {
+            padding: 4px;
+            font-size: 17px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+
+        /* BURGER CLASS IS BELOW */
+        .burger {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: none;
+
+        }
+
+        .line {
+            border: 2px solid black;
+            background-color: white;
+            width: 34px;
+            height: 5px;
+        }
+
+
+        /* SECTION --------------------------------------------------------------------------- */
+
+        .firstSection {
+            /* border: 2px solid yellow; */
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .firstSection .text-big {
+            color: orangered;
+
+        }
+
+        .box-main {
+            /* border: 4px solid green; */
+            display: flex;
+            justify-content: center;
+            height: 500px;
+            width: 900px;
+            margin: auto;
+        }
+
+
+        .firstHalf {
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            /* text-align: center; */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: large;
+        }
+
+        .secondtHalf {
+            /* border: 2px  solid blue; */
+            display: flex;
+            align-items: center;
+        }
+
+        .secondtHalf img {
+            /* border: 2px solid white; */
+            border-radius: 125px;
+            width: 210px;
+            height: 210px;
+        }
+
+        /* TEXT EDITOR P TAG -----------------------------------------------------------------------*/
+
+        .text-big {
+            font-size: 35px;
+            font-family: 'Baloo Bhai', cursive;
+
+        }
+
+
+        .text-small {
+            font-size: 19px;
+            padding-bottom: 10px;
+
+        }
+
+        /* BUTTONS ---------------------------------------------------------------------------*/
+
+        .btn {
+            padding: 2px 70px;
+            border: 2px solid white;
+            background: none;
+            cursor: pointer;
+            color: aqua;
+        }
+
+        .btn-sm {
+            padding: 3px 10px;
+        }
+
+        /* NEXT RIGHTSECTION  -------------------------------------------------------------*/
+
+        .secRight {
+            font-family: "Playfair Display", serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            max-width: 950px;
+            margin: auto;
+
+        }
+
+
+        .paras {
+            display: flex;
+            flex-direction: column;
+            padding: 0px 40px;
+            margin: 10px;
+            background: linear-gradient();
+        }
+
+
+
+        /* NEXT LEFTSECTION  -------------------------------------------------------------*/
+
+        .secLeft {
+            font-family: "Playfair Display", serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 320px;
+            max-width: 900px;
+            margin: auto;
+
+        }
+
+        .paras {
+            background: linear-gradient(wheat, white);
+            display: flex;
+            flex-direction: column;
+            padding: 0 40px;
+            border-radius: 20px;
+        }
+
+        .thumbnail img {
+            border: 2px solid black;
+            box-shadow: 17px 20px 15px black;
+            border-radius: 35px;
+            width: 180px;
+            height: 180px;
+        }
+
+        /* CONTACT -------------------------------------------------------------*/
+
+        .landing_page * {
+            font-family: Nunito, sans-serif;
+        }
+
+        .landing_page .responsive-container-block {
+            min-height: 75px;
+            height: fit-content;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            justify-content: flex-start;
+        }
+
+        .landing_page .text-blk {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            line-height: 25px;
+        }
+
+        .landing_page .responsive-cell-block {
+            min-height: 75px;
+        }
+
+        .landing_page .responsive-container-block.container {
+            max-width: 1320px;
+            margin-top: 60px;
+            margin-right: auto;
+            margin-bottom: 60px;
+            margin-left: auto;
+            position: relative;
+        }
+
+        .landing_page .form-box {
+            background-color: #151617;
+            color: white;
+            padding-top: 35px;
+            padding-right: 33px;
+            padding-bottom: 35px;
+            padding-left: 33px;
+            max-width: 506px;
+        }
+
+        .landing_page .text-blk.contactus-head {
+            font-size: 30px;
+            line-height: 40px;
+        }
+
+        .landing_page .text-blk.contactus-subhead {
+            color: #d4d4d4;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 18px;
+            margin-left: 0px;
+        }
+
+        .landing_page .input {
+            width: 100%;
+            height: 50px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 18px;
+            padding-top: 1px;
+            padding-right: 125px;
+            padding-bottom: 1px;
+            padding-left: 22.5px;
+            border-top-width: 2px;
+            border-right-width: 2px;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-top-color: #767676;
+            border-right-color: #767676;
+            border-bottom-color: #767676;
+            border-left-color: #767676;
+            border-image-source: initial;
+            border-image-slice: initial;
+            border-image-width: initial;
+            border-image-outset: initial;
+            border-image-repeat: initial;
+            background-color: #212223;
+            padding: 1px 12.5px 1px 22.5px;
+        }
+
+        .landing_page .textinput {
+            width: 100%;
+            height: 233px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 20px;
+            margin-left: 0px;
+            font-size: 18px;
+            padding-top: 22px;
+            padding-right: 22px;
+            padding-bottom: 22px;
+            padding-left: 22px;
+            background-color: #212223;
+            border-top-width: 1px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-top-color: #767676;
+            border-right-color: #767676;
+            border-bottom-color: #767676;
+            border-left-color: #767676;
+            border-image-source: initial;
+            border-image-slice: initial;
+            border-image-width: initial;
+            border-image-outset: initial;
+            border-image-repeat: initial;
+        }
+
+        .landing_page .submit-btn {
+            width: 100%;
+            height: 56px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            background-color: #146132;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            border-top-width: 2px;
+            border-right-width: 2px;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-top-color: #146132;
+            border-right-color: #146132;
+            border-bottom-color: #146132;
+            border-left-color: #146132;
+            border-image-source: initial;
+            border-image-slice: initial;
+            border-image-width: initial;
+            border-image-outset: initial;
+            border-image-repeat: initial;
+        }
+
+        .landing_page .responsive-cell-block.wk-tab-12.wk-mobile-12.wk-desk-6.wk-ipadp-6.emial {
+            padding-top: 0px;
+            padding-right: 10px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+        }
+
+        .landing_page .responsive-cell-block.wk-ipadp-6.wk-tab-12.wk-mobile-12.wk-desk-6.right-one {
+            display: flex;
+            justify-content: center;
+        }
+
+        .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+        }
+
+        .landing_page .text-blk.section-subhead {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 50px;
+            margin-left: 0px;
+            max-width: 420px;
+            font-size: 18px;
+            color: #b6b6b6;
+        }
+
+        .landing_page .text-blk.section-head {
+            font-size: 40px;
+            line-height: 55px;
+            font-weight: 800;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 15px;
+            margin-left: 0px;
+            max-width: 450px;
+        }
+
+        .landing_page .icons-container {
+            max-width: 450px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .landing_page .img {
+            width: 31px;
+            height: 31px;
+        }
+
+        .landing_page .responsive-container-block.big-container {
+            background-color: black;
+            padding-top: 0px;
+            padding-right: 50px;
+            padding-bottom: 0px;
+            padding-left: 50px;
+            position: relative;
+        }
+
+        .landing_page .bg-img {
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+            height: 100%;
+            opacity: 0.5;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+                justify-content: center;
+                margin-top: 0px;
+                margin-right: 0px;
+                margin-bottom: 30px;
+                margin-left: 0px;
+            }
+
+            .landing_page .responsive-cell-block.wk-tab-12.wk-mobile-12.wk-desk-6.wk-ipadp-6.emial {
+                padding-top: 0px;
+                padding-right: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+            }
+
+            .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+                margin: 0 0 40px 0;
+            }
+        }
+
+        /* //Responsive  */
+        
+        @media (max-width: 500px) {
+            .landing_page .text-blk.section-head {
+                font-size: 26px;
+                line-height: 40px;
+            }
+
+            .landing_page .responsive-container-block.big-container {
+                padding-top: 0px;
+                padding-right: 20px;
+                padding-bottom: 0px;
+                padding-left: 20px;
+            }
+
+            .landing_page .text-blk.section-subhead {
+                margin-top: 0px;
+                margin-right: 0px;
+                margin-bottom: 30px;
+                margin-left: 0px;
+                font-size: 16px;
+            }
+
+            .landing_page .form-box {
+                padding-top: 30px;
+                padding-right: 15px;
+                padding-bottom: 30px;
+                padding-left: 15px;
+            }
+
+            .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
+                margin: 0 0 30px 0;
+            }
+
+            .landing_page .input {
+                height: 45px;
+            }
+
+            .landing_page .text-blk.contactus-head {
+                font-size: 24px;
+                line-height: 34px;
+            }
+        }
+
+        /* RESPOCIVE-------------------------------------- */
+        @media only screen and (max-width:979px) {
+
+
+
+            /* SECTION */
+            .firstSection {
+                height: 70vh;
+            }
+
+            .box-main {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+
+
+            .btn {
+                padding: 2px 4px;
+            }
+
+            .firstHalf {
+                padding: 10px;
+            }
+
+            .secondtHalf img {
+                width: 129px;
+                height: 112px;
+            }
+
+            .text-big {
+                font-size: 21px;
+            }
+
+            .text-small {
+                font-size: 12px;
+            }
+
+            .paras {
+                padding: 0 10px
+            }
+
+            /* NEXT SECTION  */
+            .secRight {
+                flex-direction: column-reverse;
+                padding: 20px 0px;
+            }
+
+            .thumbnail img {
+                width: 129px;
+                height: 112px;
+                border-radius: 69px;
+                box-shadow: 15px 12px 20px black;
+            }
+
+            .secLeft {
+                flex-direction: column;
+            }
+
+            .text-big {
+                text-align: center;
+            }
+
+            /* CONTACT */
+            @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+
+            *,
+            *:before,
+            *:after {
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            .wk-desk-1 {
+                width: 8.333333%;
+            }
+
+            .wk-desk-2 {
+                width: 16.666667%;
+            }
+
+            .wk-desk-3 {
+                width: 25%;
+            }
+
+            .wk-desk-4 {
+                width: 33.333333%;
+            }
+
+            .wk-desk-5 {
+                width: 41.666667%;
+            }
+
+            .wk-desk-6 {
+                width: 50%;
+            }
+
+            .wk-desk-7 {
+                width: 58.333333%;
+            }
+
+            .wk-desk-8 {
+                width: 66.666667%;
+            }
+
+            .wk-desk-9 {
+                width: 75%;
+            }
+
+            .wk-desk-10 {
+                width: 83.333333%;
+            }
+
+            .wk-desk-11 {
+                width: 91.666667%;
+            }
+
+            .wk-desk-12 {
+                width: 100%;
+            }
+
+            @media (max-width: 1024px) {
+                .wk-ipadp-1 {
+                    width: 8.333333%;
+                }
+
+                .wk-ipadp-2 {
+                    width: 16.666667%;
+                }
+
+                .wk-ipadp-3 {
+                    width: 25%;
+                }
+
+                .wk-ipadp-4 {
+                    width: 33.333333%;
+                }
+
+                .wk-ipadp-5 {
+                    width: 41.666667%;
+                }
+
+                .wk-ipadp-6 {
+                    width: 50%;
+                }
+
+                .wk-ipadp-7 {
+                    width: 58.333333%;
+                }
+
+                .wk-ipadp-8 {
+                    width: 66.666667%;
+                }
+
+                .wk-ipadp-9 {
+                    width: 75%;
+                }
+
+                .wk-ipadp-10 {
+                    width: 83.333333%;
+                }
+
+                .wk-ipadp-11 {
+                    width: 91.666667%;
+                }
+
+                .wk-ipadp-12 {
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .wk-tab-1 {
+                    width: 8.333333%;
+                }
+
+                .wk-tab-2 {
+                    width: 16.666667%;
+                }
+
+                .wk-tab-3 {
+                    width: 25%;
+                }
+
+                .wk-tab-4 {
+                    width: 33.333333%;
+                }
+
+                .wk-tab-5 {
+                    width: 41.666667%;
+                }
+
+                .wk-tab-6 {
+                    width: 50%;
+                }
+
+                .wk-tab-7 {
+                    width: 58.333333%;
+                }
+
+                .wk-tab-8 {
+                    width: 66.666667%;
+                }
+
+                .wk-tab-9 {
+                    width: 75%;
+                }
+
+                .wk-tab-10 {
+                    width: 83.333333%;
+                }
+
+                .wk-tab-11 {
+                    width: 91.666667%;
+                }
+
+                .wk-tab-12 {
+                    width: 100%;
+                }
+            }
+
+            .wk-mobile-1 {
+                width: 8.333333%;
+            }
+
+            .wk-mobile-2 {
+                width: 16.666667%;
+            }
+
+            .wk-mobile-3 {
+                width: 25%;
+            }
+
+            .wk-mobile-4 {
+                width: 33.333333%;
+            }
+
+            .wk-mobile-5 {
+                width: 41.666667%;
+            }
+
+            .wk-mobile-6 {
+                width: 50%;
+            }
+
+            .wk-mobile-7 {
+                width: 58.333333%;
+            }
+
+            .wk-mobile-8 {
+                width: 66.666667%;
+            }
+
+            .wk-mobile-9 {
+                width: 75%;
+            }
+
+            .wk-mobile-10 {
+                width: 83.333333%;
+            }
+
+            .wk-mobile-11 {
+                width: 91.666667%;
+            }
+
+            .wk-mobile-12 {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
 
 <body>
-    <h2>Take file and Upload here..</h2>
 
-    <div class="upload">
-        <img id="profile-pic" src="https://t3.ftcdn.net/jpg/09/22/04/82/360_F_922048283_XDjzi7DlHaIERCReQkX7YN03SIH6ZocR.jpg" alt="loading">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="img-nav">
+            <img src="data:image/jpeg;base64,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"
+                alt="logo">
+        </div>
 
-        <!-- //label (for) attribute do work which input having a type label
-    (for) and input (id) attribute want be same  -->
+        <a class="navbar-brand" href="#About">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#Services">Services <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Contact us">Contact us</a>
+                </li>
 
-        <label for="input-file">Upload image</label>
-        <input type="file" id="input-file" >
+                <li class="nav-item">
+                    <a class="nav-link" href="#fotter">Footer</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <!-- //accept attribute of input take only this file which you given  -->
-        <!-- <input type="file" id="input-file" accept="image/png ,image/jpg ,image/jpeg"> -->
+    <!-- NEXT PART -->
+    <!-- background class is same above in navbar and below in section -->
+
+    <section class="background  firstSection">
+        <div class="box-main" id="About">
+
+            <div class="firstHalf">
+
+                <p class="text-big"><strong>The future of the education is Unversity</strong> </p>
+                <h4>|</h4>
+                <p class="text-small">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit,
+                    recusandae.Lorem
+                    D. Y . Patil collage establish io the 2023.</p>
+
+                <div class="button">
+                    <button type="button" class="btn btn-primary btn-lg">Watch</button>
+
+                </div>
+
+            </div>
+
+            <div class="secondtHalf">
+                <img src="https://plus.unsplash.com/premium_photo-1714397546754-3c1ef1be26e9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="nature">
+            </div>
+
+        </div>
+    </section>
 
 
+    <!-- NEXT SECTION -->
+
+    <section class="secRight" id="Services">
+        <div class="paras">
+
+            <p class="sectionTag text-big">Educaton about the computer Engneerng</p>
+            <p class="sectionSubTag text-small">
+                Computer engineering is a field that combines computer science and electrical engineering to design and
+                develop computer systems. Computer engineers work on all aspects of computer systems, including
+                hardware, software, and robotics. They research, design, develop, construct, and test computer systems
+                and components,
+            </p>
+
+        </div>
+
+        <div class="thumbnail">
+            <img src="https://images.unsplash.com/photo-1445620466293-d6316372ab59?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbXB1dGVyfGVufDB8fDB8fHww"
+                alt="laptop" class="imgfluit">
+        </div>
+
+    </section>
+
+    <!-- NEXT SECTION -->
+
+    <section class="secLeft">
+        <div class="thumbnail">
+            <img src="https://images.unsplash.com/photo-1667052673589-b088f6cfd598?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2l2aWx8ZW58MHx8MHx8fDA%3D"
+                alt="laptop" class="imgfluit">
+        </div>
+
+        <div class="paras">
+
+            <p class="sectionTag text-big">Educaton about the civil Engneerng</p>
+            <p class="sectionSubTag text-small">
+                Civil engineering is a professional discipline that involves the design, construction, and maintenance
+                of the physical environment. It includes public works such as:
+                roads, bridges, canals, dams, airports, sewage systems, pipelines, and railways.
+                To pursue a degree in civil engineering.
+            </p>
+
+        </div>
+
+
+    </section>
+
+    <!-- NEXT SECTION -->
+
+    <section class="secRight">
+        <div class="paras">
+
+            <p class="sectionTag text-big">Educaton about the mechanic Engneerng</p>
+            <p class="sectionSubTag text-small">
+                Mechanical engineering is one of the broadest engineering disciplines—offering opportunities to
+                specialize in areas such as robotics, aerospace, automotive engineering, HVAC (heating, ventilation, and
+                air conditioning), biomechanics, and more. Mechanical engineers design, develop, build, and test.
+            </p>
+
+        </div>
+        <div class="thumbnail">
+            <img src="https://images.unsplash.com/photo-1718824331840-399943ff5c1e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFjaGFuaWNhbHxlbnwwfHwwfHx8MA%3D%3D"
+                alt="laptop" class="imgfluit">
+        </div>
+
+    </section>
+    <!-- <hr> -->
+
+    <!-- NEXT SECTION -->
+
+    <div class="landing_page" id="Contact us">
+        <div class="responsive-container-block big-container">
+            <img class="bg-img" id="iq5bf"
+                src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZWR1Y2F0aW9ufGVufDB8fDB8fHww">
+            <div class="responsive-container-block container">
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12 left-one">
+                    <div class="content-box">
+                        <p class="text-blk section-head">
+                            Contact Us
+                        </p>
+                        <p class="text-blk section-subhead">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis volupta
+                        </p>
+                        <div class="icons-container">
+                            <a class="share-icon">
+                                <img class="img"
+                                    src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-twitter.png">
+                            </a>
+                            <a class="share-icon">
+                                <img class="img"
+                                    src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-facebook.png">
+                            </a>
+                            <a class="share-icon">
+                                <img class="img"
+                                    src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-google.png">
+                            </a>
+                            <a class="share-icon">
+                                <img class="img"
+                                    src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-instagram.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6 right-one" id="i1zj">
+                    <form class="form-box">
+                        <div class="container-block form-wrapper">
+                            <p class="text-blk contactus-head">
+                                <a class="link" href="">
+                                </a>
+                                Get a quote
+                            </p>
+                            <p class="text-blk contactus-subhead">
+                                We will get back to you in 24 hours
+                            </p>
+                            <div class="responsive-container-block">
+                                <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12"
+                                    id="i10mt-7">
+                                    <input class="input" id="ijowk-7" name="FirstName" placeholder="First Name">
+                                </div>
+                                <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12"
+                                    id="i1ro7">
+                                    <input class="input" id="indfi-5" name="Last Name" placeholder="Last Name">
+                                </div>
+                                <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-6 emial"
+                                    id="ityct">
+                                    <input class="input" id="ipmgh-7" name="Email" placeholder="Email">
+                                </div>
+                                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                                    <input class="input" id="imgis-6" name="PhoneNumber" placeholder="Phone Number">
+                                </div>
+                                <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12"
+                                    id="i634i-7">
+                                    <textarea aria-placeholder="Type message here" class="textinput" id="i5vyy-7"
+                                        placeholder="Type message here"></textarea>
+                                </div>
+                            </div>
+                            <button class="submit-btn">
+                                Get quote
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <footer id="fotter">
+        <p class="last-text">
+            Copyright &copy ; 2027 iEduction - All rights reserved
+        </p>
+    </footer>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="static/css/responsive.js"></script>
+
+
 </body>
 
-<script>
-    let profilepic = document.getElementById("profile-pic")
-    console.log(profilepic);
-
-    let inputfile = document.getElementById("input-file")
-    console.log(inputfile);
-
-    inputfile.onchange = async function(){
-
-         profilepic.src =  URL.createObjectURL(inputfile.files[0]);
-         alert("upload successfully..");
-    }
-
-
-</script>
 
 </html>
